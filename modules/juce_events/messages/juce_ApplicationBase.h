@@ -216,7 +216,12 @@ public:
         @returns  true if the event has been handled, or false if the default OS
                   behaviour should happen
      */
-    virtual bool backButtonPressed() { return false; }
+    virtual bool backButtonPressed()
+    {
+        return onBackPressed ? onBackPressed() : false;
+    }
+
+    std::function<bool()> onBackPressed;
 
     //==============================================================================
     /** Signals that the main message loop should stop and the application should terminate.

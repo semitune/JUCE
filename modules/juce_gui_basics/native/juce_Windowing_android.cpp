@@ -1668,8 +1668,8 @@ public:
 
             if (activity != nullptr)
             {
-                if (const auto finishMethod = AndroidActivity.finish)
-                    env->CallVoidMethod (activity.get(), finishMethod);
+                if (const auto moveTaskToBackMethod = AndroidActivity.moveTaskToBack)
+                    env->CallBooleanMethod (activity.get(), moveTaskToBackMethod, true);
             }
         }
     }
